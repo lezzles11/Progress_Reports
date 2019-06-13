@@ -7,6 +7,9 @@ Special Educators often need to generate hundreds of progress reports per progre
 </tr>
 </table>
 
+<img src="img/firstDraft.png">
+
+
 <h2>Built with </h2>
 - [Netbeans]
 - [Java]
