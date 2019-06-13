@@ -20,7 +20,7 @@ public class ProgressReports {
         first.firstPart1();
         first.firstPart2();
         first.firstPart3();
-        first.firstPart4();
+        first.print();
     }
     
 }

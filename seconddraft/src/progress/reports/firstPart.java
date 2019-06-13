@@ -41,29 +41,32 @@ public class firstPart {
     }
     public void firstPart3() {
         Scanner reader = new Scanner(System.in); 
+        ArrayList <String> added = new ArrayList<String>(); 
+        System.out.println("Now, for benchmarks... (Remember to have the document open!");
         for (int i = 0; i < this.goals.size(); i++) {
             int num = i +1; 
             System.out.println("How many benchmarks does goal " + num + " have?");
             System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to " + goals.get(i));
             int numBenchmark = Integer.parseInt(reader.nextLine());
             for (int j = 0; j < numBenchmark; j++) {
-                ArrayList <String> added = new ArrayList<String>(); 
+                
                 int nums = j + 1; 
                 System.out.println("Write down benchmark " + nums);
                 System.out.println(this.name + "will be able to... (finish the sentence)");
                 String benchmark = reader.nextLine();   
                 added.add(benchmark);
-                this.benchmarks.put(goals.get(i), added);
+                
             } 
+            this.benchmarks.put(goals.get(i), added);
         }
     }
     
-    public void firstPart4() {
-        for (String goal : this.benchmarks.keySet()) {
-            System.out.println(goal + this.benchmarks.get(goal));
+    public void print(){
+        for (String benchmark : this.benchmarks.keySet()) {
+            System.out.println(benchmark + this.benchmarks.get(benchmark));
         }
-    
     }
+    
 }
 
 
