@@ -17,11 +17,9 @@ public class ProgressReports {
     public static void main(String[] args) {
         // TODO code application logic here
         firstPart first = new firstPart(); 
-        first.firstPart1();
-        first.firstPart2();
-        first.firstPart3();
-        first.firstPart4();
-        first.firstPart5();
+        first.start();
+        secondPart second = new secondPart(first.getName(), first.getHashMap()); 
+        
     }
     
 }
