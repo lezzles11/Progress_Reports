@@ -19,7 +19,8 @@ public class ProgressReports {
         firstPart first = new firstPart(); 
         first.firstPart1();
         first.firstPart2();
-        
+        first.firstPart3();
+        first.firstPart4();
     }
     
 }
