@@ -18,6 +18,7 @@ public class firstPart {
     private ArrayList<String> goalAreas; 
     private ArrayList<String> assignments; 
     private String cheshe; 
+    private ProgressReports comments; 
     
     public firstPart() {
         this.name = new String(); 
@@ -32,27 +33,27 @@ public class firstPart {
         this.goalAreas = new ArrayList<String>(); 
         this.assignments = new ArrayList<String>(); 
         this.cheshe = new String(); 
+        this.comments = new ProgressReports(); 
     }
     
-    public void start(){
-        firstPart1();
-        firstPart2();
+    public void setUp(){
+        step1Name();
+        step2Gender(); 
+        step3Class();
+        step4Period(); 
+        step5Initials();
+    }
+    
+    public void testing() {
         firstPart3();
         firstPart4();
         print(); 
         getName(); 
-    }
-    
-    public void testing() {
-        testing1();
-        testing2();
-        testing3();
-        testing4();
         testing5();
         testing6();
     }
     // getting student name 
-    public void firstPart1() {
+    public void step1Name() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("Progress Reports Time!");
         System.out.println("What is this student's name?");
@@ -61,8 +62,9 @@ public class firstPart {
         System.out.println("From here on out, it is mostly copying and pasting!");
         System.out.println("And we will then generate the most beautiful progress report for you.");
     }
+    
     // what gender? 
-    public void testing1() {
+    public void step2Gender() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("Whoops - I don't quite have a system in which to seperate girls from boys -");
         while (true) {
@@ -88,16 +90,16 @@ public class firstPart {
         }
         }
     }
-    
     // getting the name of the class 
-    public void testing2(){
+    public void step3Class(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("What is the class that is being commented on?");
         System.out.println("Keep it short - e.g., HN English; HN World History II; Sub-Seperate Math");
         this.nameOfClass = reader.nextLine(); 
     }
+    
     // getting progress period 
-    public void testing3(){
+    public void step4Period(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("What is the progress reporting period?");
         System.out.println("Input a number between 1 and 4");
@@ -115,7 +117,7 @@ public class firstPart {
         }
     };
     // getting initials of special educator 
-    public void testing4() {
+    public void step5Initials() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("What are your initials?");
         System.out.println("Just enter 2-3 letters, please");
