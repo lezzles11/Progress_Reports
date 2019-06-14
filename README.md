@@ -7,13 +7,12 @@ Special Educators often need to generate hundreds of progress reports per progre
 </tr>
 </table>
 
-##Built with 
-- [Netbeans]
-- [Java]
+<h3>First Draft</h3>
+<img src="img/firstDraft.png">
 
-##To-Do 
+<h3>To Do</h3>
 - [Create swing application]
 
-##Creator
+<h4>Created By</h4>
 Lesley C. 
  
