@@ -16,6 +16,8 @@ public class firstPart {
     private String hisher;
     private String initials; 
     private ArrayList<String> goalAreas; 
+    private ArrayList<String> assignments; 
+    private String cheshe; 
     
     public firstPart() {
         this.name = new String(); 
@@ -28,6 +30,8 @@ public class firstPart {
         this.heshe = new String(); 
         this.initials = new String(); 
         this.goalAreas = new ArrayList<String>(); 
+        this.assignments = new ArrayList<String>(); 
+        this.cheshe = new String(); 
     }
     
     public void start(){
@@ -68,10 +72,12 @@ public class firstPart {
         if (ans == 1) {
             this.hisher = "her";
             this.heshe = "she";
+            this.cheshe = "She";
             break; 
         } else if (ans == 2) {
             this.hisher = "his";
             this.heshe = "he";
+            this.cheshe = "He";
             break; 
         } else if (ans == 3) {
             this.hisher = this.name; 
@@ -136,7 +142,7 @@ public class firstPart {
             // the first sentence of every goal 
             String finalGoal = this.name + " was able to " + goal + "."; 
             this.benchmarks.put(finalGoal, new ArrayList<String>()); 
-            this.goals.add(goal); 
+            this.goals.add(finalGoal); 
         }
     }
     
@@ -144,23 +150,25 @@ public class firstPart {
     public void firstPart4() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("\n\nNow, let's get " + this.name + "'s benchmarks!\n(Remember to have the document open!)\n\n");
+        System.out.println("I will ask you about what his benchmarks are, as well as what assignment measures that goal.");
         
         for (int i = 0; i < this.goals.size(); i++) {
             ArrayList<String> added = new ArrayList<String>(); 
             int num = i + 1; 
-             System.out.println("How many benchmarks does " + this.name + " have for goal " + num + "?");
             System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to " + goals.get(i)+")");
+            System.out.println("\nWhat is an assignment or task related to this benchmark?\n");
+            System.out.println("E.g., WWII Research Paper; Geometry Final Exam; Presentation on Energy Waves (Give a specific assignment name) \n");
+            String assign = reader.nextLine();
+            this.assignments.add(assign); 
+            System.out.println("How many benchmarks does " + this.name + " have for goal " + num + "?");
             System.out.println("Remember to enter a number!");
+            
                 int numBenchmark = Integer.parseInt(reader.nextLine());
                 for (int j = 0; j < numBenchmark; j++) {
                     int numba = j + 1; 
-                    System.out.println("Benchmark " + numba + ":\n" + this.name + " will be able to... (finish the sentence)");
+                    System.out.println("\nBenchmark " + numba + ":\n" + this.name + " will be able to... (finish the sentence)");
                     String benchmark = reader.nextLine();
-                    System.out.println("\nWhat is an assignment or task related to this benchmark?\n");
-                    System.out.println("E.g., WWII Research Paper; Geometry Final Exam; Presentation on Energy Waves (Give a specific assignment name) \n");
-                    String assignment = reader.nextLine();
-                    String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen through the completion of " + assignment + ".";
-                    added.add(finalBenchmark);
+                    added.add(benchmark);
             } this.benchmarks.put(goals.get(i), added);
         }
     }
@@ -189,9 +197,12 @@ public class firstPart {
     } this.goalAreas.add(get); 
     }
     
+    // how did the student perform on the goal? 
     public void testing6() {
         Scanner reader = new Scanner(System.in); 
+        String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen through the completion of " + assignment + ".\n";
         for (int i = 0; i < this.goalAreas.size(); i++) {
+            String benchmarkEach = this.benchmarks.get(i);
             System.out.println("How did " + this.name + " perform on the goal?");
             System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
             int num = Integer.parseInt(reader.nextLine());
@@ -204,8 +215,11 @@ public class firstPart {
             } else {
                 System.out.println("I don't think I understood that. Try again? ");
             }
+        
         }
     }
+    //String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen 
+    //through the completion of " + assignment + ".\n";
     public void great(String goalArea){
         this.benchmarks.forEach((k, v) -> {
             String beginningPart = beginningPart(); 
@@ -224,10 +238,8 @@ public class firstPart {
             System.out.print(beginningPart + k + ".");
             v.forEach(w -> System.out.print(w + ","));
             System.out.println(this.name + " did well in " + goalArea);
-            System.out.println(this.heshe + " may need to continue to work hard on all assignments (as well as completing them on time).");
-            System.out.println("Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, ");
-            System.out.println(this.name + "should be able to achieve this annual goal by the end of the IEP period "+ this.initials +".");
-            System.out.println();
+            System.out.println(this.name + " may need to continue to work hard on all assignments (as well as completing them on time).");
+            
         });
     }
     
@@ -239,7 +251,6 @@ public class firstPart {
             System.out.println(this.name + " struggled in " + goalArea);
             System.out.println(this.heshe + " is able to use checklists in class, but " + this.name + " may need to work on doing so independently.");
             System.out.println(this.heshe + " frequently needs encouragement in staying afterschool to complete written work.");
-            System.out.print(this.name + " still requires extensive teacher-guided practice - With increased motivation and consistent effort and progress, it may be possible for " +this.name+" to achieve this goal" + this.initials + ".");
             System.out.println();
         });
     }
@@ -283,8 +294,63 @@ public class firstPart {
         return finally1; 
     }
     
+    public String endingPart(){
+        String pt1 = "Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, ";
+        String pt2 = this.name + " should be able to achieve this annual goal by the end of the IEP period "+ this.initials +".";
+        return pt1 + pt2; 
+    }
+    
     
     
 }
+
+/*
+
+
+if(player.equals(comp)){
+                    JOptionPane.showMessageDialog(null, "It's a tie!");
+                    ties ++;
+
+                }
+                else if(player.equals("rock")){
+                    if(comp.equals("scissors")){
+                        JOptionPane.showMessageDialog(null, "You win!");
+                        playerWins ++;
+
+                    }
+                }else if(comp.equals("rock")){
+                    if(player.equals("scissors")){
+                        JOptionPane.showMessageDialog(null, "You lose!");
+                        compWins ++;
+
+                    }
+                }else if(player.equals("scissors")){
+                    if(comp.equals("paper")){
+                        JOptionPane.showMessageDialog(null, "You win!");
+                        playerWins ++;
+
+                    }
+                }else if(comp.equals("scissors")){
+                    if(player.equals("paper")){
+                        JOptionPane.showMessageDialog(null, "You lose");
+                        compWins ++;
+
+                    }
+                }else if(player.equals("paper")){
+                    if(comp.equals("rock")){
+                        JOptionPane.showMessageDialog(null, "You Win!");
+                        playerWins ++;
+                    }
+                }else if(comp.equals("paper")){
+                    if(player.equals("rock")){
+                        JOptionPane.showMessageDialog(null, "You lose!");
+                        compWins ++;
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Invalid user input");
+                    i--;
+                }
+
+*/
 
 
