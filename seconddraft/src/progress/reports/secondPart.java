@@ -112,10 +112,20 @@ public class secondPart {
     
     public void secondPart6() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("How did " + this.name + " perform on the goal?");
-        System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
-        int num = Integer.parseInt(reader.nextLine());
-        
+        for (int i = 0; i < this.goalAreas.size(); i++) {
+            System.out.println("How did " + this.name + " perform on the goal?");
+            System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
+            int num = Integer.parseInt(reader.nextLine());
+            if (num == 1) {
+                great(this.goalAreas.get(i));
+            } else if (num == 2){
+                okay(this.goalAreas.get(i));
+            } else if (num ==3) {
+               bad(this.goalAreas.get(i));
+            } else {
+                System.out.println("I don't think I understood that. Try again? ");
+            }
+        }
     }
     public void great(String goalArea){
         this.benchmarks.forEach((k, v) -> {
