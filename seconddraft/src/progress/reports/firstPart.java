@@ -38,6 +38,15 @@ public class firstPart {
         print(); 
         getName(); 
     }
+    
+    public void testing() {
+        testing1();
+        testing2();
+        testing3();
+        testing4();
+        testing5();
+        testing6();
+    }
     // getting student name 
     public void firstPart1() {
         Scanner reader = new Scanner(System.in); 
@@ -49,7 +58,7 @@ public class firstPart {
         System.out.println("And we will then generate the most beautiful progress report for you.");
     }
     // what gender? 
-    public void secondPart3() {
+    public void testing1() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("Whoops - I don't quite have a system in which to seperate girls from boys -");
         while (true) {
@@ -75,43 +84,43 @@ public class firstPart {
     }
     
     // getting the name of the class 
-    public void secondPart1(){
+    public void testing2(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("What is the class that is being commented on?");
         System.out.println("Keep it short - e.g., HN English; HN World History II; Sub-Seperate Math");
         this.nameOfClass = reader.nextLine(); 
     }
     // getting progress period 
-    public void secondPart2(){
+    public void testing3(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("What is the progress reporting period?");
         System.out.println("Input a number between 1 and 4");
         int period = Integer.parseInt(reader.nextLine());
         if (period == 1) {
-            this.progressReportingPeriod = "Progress Reporting Period #1";
+            this.progressReportingPeriod = "Progress Reporting Period #1 " + this.initials +":";
         } else if (period == 2) {
-            this.progressReportingPeriod = "Progress Reporting Period #2";
+            this.progressReportingPeriod = "Progress Reporting Period #2 " + this.initials+":";
         } else if (period == 3) {
-            this.progressReportingPeriod = "Progress Reporting Period #3";
+            this.progressReportingPeriod = "Progress Reporting Period #3 " + this.initials+":";
         } else if (period == 4) {
-            this.progressReportingPeriod = "Progress Reporting Period #4";
+            this.progressReportingPeriod = "Progress Reporting Period #4 " + this.initials+":";
         } else {
             System.out.println("Please enter a number between 1 and 4");
         }
     };
     // getting initials of special educator 
-    public void secondPart4() {
+    public void testing4() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("What are your initials?");
         System.out.println("Just enter 2-3 letters, please");
         System.out.println("E.g., type in LC for Lizzie Cheung");
-        this.initials = reader.nextLine(); 
+        String initial = reader.nextLine(); 
+        this.initials = "("+initial+")";
     }
     //getting the number of goals the student has 
     public void firstPart2() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("How many goals does " + this.name + " have?");
-        System.out.println("Remember to enter a number!");
+        System.out.println("How many goals does " + this.name + " have? (Please enter a number)");
         this.numGoals = Integer.parseInt(reader.nextLine());
     }
     //getting each goal 
@@ -122,6 +131,7 @@ public class firstPart {
             System.out.println("For goal " + num + ": ");
             System.out.print(this.name + " will be able to... ");
             System.out.println("(Finish the sentence)");
+            System.out.println("E.g., write with clear organization and sufficient detail with 70% independence, as measured by teacher progress reports and curriculum based assessments.");
             String goal = reader.nextLine();
             // the first sentence of every goal 
             String finalGoal = this.name + " was able to " + goal + "."; 
@@ -133,36 +143,38 @@ public class firstPart {
     // getting number of benchmarks; 
     public void firstPart4() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("\n\nNow, let's get " + this.name + "'s benchmarks! \n (Remember to have the document open!)");
-        ArrayList<String> added = new ArrayList<String>(); 
-        for (int i = 0; i < this.benchmarks.size(); i++) {
+        System.out.println("\n\nNow, let's get " + this.name + "'s benchmarks!\n(Remember to have the document open!)\n\n");
+        
+        for (int i = 0; i < this.goals.size(); i++) {
+            ArrayList<String> added = new ArrayList<String>(); 
             int num = i + 1; 
-             System.out.println("How many benchmarks does he have for goal " + num + "?");
-            System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to \n" + goals.get(i)+")");
+             System.out.println("How many benchmarks does " + this.name + " have for goal " + num + "?");
+            System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to " + goals.get(i)+")");
             System.out.println("Remember to enter a number!");
                 int numBenchmark = Integer.parseInt(reader.nextLine());
                 for (int j = 0; j < numBenchmark; j++) {
                     int numba = j + 1; 
-                    System.out.println(this.name + " will be able to... (finish the sentence)");
+                    System.out.println("Benchmark " + numba + ":\n" + this.name + " will be able to... (finish the sentence)");
                     String benchmark = reader.nextLine();
-                    System.out.println("What is an assignment or task related to this benchmark?");
-                    System.out.println("E.g., WWII Research Paper; Geometry Final Exam (keep it short); Presentation on Energy Waves");
+                    System.out.println("\nWhat is an assignment or task related to this benchmark?\n");
+                    System.out.println("E.g., WWII Research Paper; Geometry Final Exam; Presentation on Energy Waves (Give a specific assignment name) \n");
                     String assignment = reader.nextLine();
-                    String finalBenchmark = this.name + " was able to " +benchmark + "\n this past semester, which was seen through the completion of " + assignment + ".";
+                    String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen through the completion of " + assignment + ".";
                     added.add(finalBenchmark);
             } this.benchmarks.put(goals.get(i), added);
         }
     }
     // What kind of goal is it? 
-    public void secondPart5(){
+    public void testing5(){
         Scanner reader = new Scanner(System.in); 
         String get = new String(); 
-        for (int i = 0; i < this.benchmarks.size(); i++) {
+        for (int i = 0; i < this.goals.size(); i++) {
             int num = i + 1; 
             System.out.println("Is goal " + num + " an [1] organization, [2] writing, [3] reading or [4] math goal?");
             System.out.println("Enter a number, please");
-            System.out.println("Remember, goal " + num + " is " + this.benchmarks.get(i));
+            System.out.println("Remember, goal " + num + " is " + goals.get(i));
             int goalArea = Integer.parseInt(reader.nextLine()); 
+            
             if (goalArea == 1) {
                 get = getOrganization(); 
             } else if (goalArea == 2) {
@@ -174,10 +186,10 @@ public class firstPart {
             } else {
                 System.out.println("Sorry, please type in a number");
             }
-    }this.goalAreas.add(get); 
+    } this.goalAreas.add(get); 
     }
     
-    public void secondPart6() {
+    public void testing6() {
         Scanner reader = new Scanner(System.in); 
         for (int i = 0; i < this.goalAreas.size(); i++) {
             System.out.println("How did " + this.name + " perform on the goal?");
@@ -196,7 +208,8 @@ public class firstPart {
     }
     public void great(String goalArea){
         this.benchmarks.forEach((k, v) -> {
-            System.out.print(k + " = ");
+            String beginningPart = beginningPart(); 
+            System.out.print(beginningPart + k + ".");
             v.forEach(w -> System.out.print(w + ","));
             System.out.println(this.name + " exceed in " + goalArea);
             System.out.println(this.name + " has been a positive influence on the class, and we are proud to see " + this.name +"'s progress over the past quarter("+ this.initials +").");
@@ -207,22 +220,25 @@ public class firstPart {
     
     public void okay(String goalArea){
         this.benchmarks.forEach((k, v) -> {
-            System.out.print(k + " = ");
+            String beginningPart = beginningPart(); 
+            System.out.print(beginningPart + k + ".");
             v.forEach(w -> System.out.print(w + ","));
             System.out.println(this.name + " did well in " + goalArea);
             System.out.println(this.heshe + " may need to continue to work hard on all assignments (as well as completing them on time).");
             System.out.println("Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, ");
-            System.out.println(this.name + "should be able to achieve this annual goal by the end of the IEP period ("+ this.initials +").");
+            System.out.println(this.name + "should be able to achieve this annual goal by the end of the IEP period "+ this.initials +".");
             System.out.println();
         });
     }
     
     public void bad(String goalArea){
         this.benchmarks.forEach((k, v) -> {
-            System.out.print(k + " = ");
-            v.forEach(w -> System.out.print(w + ","));
+            String beginningPart = beginningPart(); 
+            System.out.print(beginningPart + k + ".");
+            v.forEach(w -> System.out.print(this.name + "was able to " + w + ","));
             System.out.println(this.name + " struggled in " + goalArea);
             System.out.println(this.heshe + " is able to use checklists in class, but " + this.name + " may need to work on doing so independently.");
+            System.out.println(this.heshe + " frequently needs encouragement in staying afterschool to complete written work.");
             System.out.print(this.name + " still requires extensive teacher-guided practice - With increased motivation and consistent effort and progress, it may be possible for " +this.name+" to achieve this goal" + this.initials + ".");
             System.out.println();
         });
@@ -251,7 +267,7 @@ public class firstPart {
     }
     
     public String getWriting(){
-        String writing = " writing a cohesive multi-paragraph writing piece.";
+        String writing = "writing a cohesive multi-paragraph writing piece.";
         return writing; 
     }
     
@@ -259,10 +275,15 @@ public class firstPart {
         String math = " solving complex word problems by breaking each step down."; 
         return math; 
     }
-    public String draftreport(){
-        String pt1 = this.progressReportingPeriod + " " + this.nameOfClass + this.name; 
-        return pt1; 
+    public String beginningPart(){
+        String pt1 = this.progressReportingPeriod + "\n";
+        String pt2 = "In " + this.nameOfClass + ", " + this.name + " is making progress towards the goal of "; 
+        String finally1 = new String(); 
+        finally1 = pt1 + pt2; 
+        return finally1; 
     }
+    
+    
     
 }
 
