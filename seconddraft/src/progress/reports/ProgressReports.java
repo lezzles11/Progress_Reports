@@ -18,6 +18,7 @@ public class ProgressReports {
         // TODO code application logic here
         firstPart first = new firstPart();
         first.start();
+        first.testing(); 
     }
 
 }
