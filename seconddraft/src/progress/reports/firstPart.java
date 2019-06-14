@@ -200,9 +200,8 @@ public class firstPart {
     // how did the student perform on the goal? 
     public void testing6() {
         Scanner reader = new Scanner(System.in); 
-        String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen through the completion of " + assignment + ".\n";
         for (int i = 0; i < this.goalAreas.size(); i++) {
-            String benchmarkEach = this.benchmarks.get(i);
+            ArrayList<String> benchmarkEach = this.benchmarks.get(i);
             System.out.println("How did " + this.name + " perform on the goal?");
             System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
             int num = Integer.parseInt(reader.nextLine());
