@@ -12,24 +12,24 @@ import java.util.*;
  * @author lesleycheung
  */
 public class SpecificGoals {
-    private static final String[] AWESOME = {"'s been able to successfully identify steps in ",
-    " has made awesome progress in ",
-    " always manages to have a positive influence on the class environment by ",
-    " has improved his skills in "
+    private static final String[] AWESOME = {"'s been able to successfully identify steps in",
+    " has made awesome progress in",
+    " always manages to have a positive influence on the class environment by",
+    " has improved his skills in"
     };
     private static final String[] BAD = { " may need more encouragement in", 
     " may need to demonstrate more consistent effort in", 
-    " also had difficulty in ",
-    " also needed more direct instruction in ",
-    " struggled with independently ",
-    " needs frequent reminders in ",
-    "'s inconsistent attendance over the past quarter may have impeded the ability in "
+    " also had difficulty in",
+    " also needed more direct instruction in",
+    " struggled with independently",
+    " needs frequent reminders in",
+    "'s inconsistent attendance over the past quarter may have impeded the ability in"
     };
     
     private static final String[] OKAY = {" also requires some teacher support and check-ins in",
                     "'s distractions in class may sometimes affect the process of",
-                    " seemed to have little difficulty in ",
-                    " has been making consistent progress in "
+                    " seemed to have little difficulty in",
+                    " has been making consistent progress in"
     };
     private static final String[] READ = {
     " using active reading strategies to try to make sense of texts.",
