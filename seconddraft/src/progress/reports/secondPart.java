@@ -17,7 +17,7 @@ public class secondPart {
     private String progressReportingPeriod; 
     private String nameOfClass; 
     private String heshe; 
-    private String himher; 
+    private String hisher; 
     
     public secondPart(String name, HashMap<String, ArrayList<String>> benchmarks) {
         this.name = name; 
@@ -25,7 +25,7 @@ public class secondPart {
         this.initials = new String(); 
         this.progressReportingPeriod = new String(); 
         this.nameOfClass = new String();
-        this.himher = new String(); 
+        this.hisher = new String(); 
         this.heshe = new String(); 
     } 
     // What class?
@@ -62,15 +62,15 @@ public class secondPart {
             System.out.println("Enter a number, please!");
             int ans = Integer.parseInt(reader.nextLine()); 
         if (ans == 1) {
-            this.himher = "her";
+            this.hisher = "her";
             this.heshe = "she";
             break; 
         } else if (ans == 2) {
-            this.himher = "he";
+            this.hisher = "his";
             this.heshe = "he";
             break; 
         } else if (ans == 3) {
-            this.himher = this.name; 
+            this.hisher = this.name; 
             this.heshe = this.name; 
             break; 
         } else {
@@ -93,20 +93,22 @@ public class secondPart {
         System.out.println("How did the student do on the goal?");
     }
     
-    public void great(String goal){
+    public void great(String goalArea){
         this.benchmarks.forEach((k, v) -> {
             System.out.print(k + " = ");
             v.forEach(w -> System.out.print(w + ","));
+            System.out.println(this.name + " exceed in " + goalArea);
             System.out.println(this.name + " has been a positive influence on the class, and we are proud to see " + this.name +"'s progress over the past quarter");
             System.out.println("");
             System.out.println();
         });
     }
     
-    public void okay(String goal){
+    public void okay(String goalArea){
         this.benchmarks.forEach((k, v) -> {
             System.out.print(k + " = ");
             v.forEach(w -> System.out.print(w + ","));
+            System.out.println(this.name + " did well in " + goalArea);
             System.out.println(this.heshe + " may need to continue to work hard on all assignments (as well as completing them on time).");
             System.out.println("Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, ");
             System.out.println(this.name + "should be able to achieve this annual goal by the end of the IEP period.");
@@ -114,11 +116,11 @@ public class secondPart {
         });
     }
     
-    public void bad(String goal){
+    public void bad(String goalArea){
         this.benchmarks.forEach((k, v) -> {
             System.out.print(k + " = ");
             v.forEach(w -> System.out.print(w + ","));
-            System.out.println(this.name + "");
+            System.out.println(this.name + " struggled in " + goalArea);
             System.out.println(this.heshe + " is able to use checklists in class, but " + this.name + " may need to work on doing so independently.");
             System.out.print(this.name + " still requires extensive teacher-guided practice - With increased motivation and consistent effort and progress, it may be possible for " +this.name+" to achieve this goal" + this.initials + ".");
             System.out.println();
@@ -126,22 +128,22 @@ public class secondPart {
     }
     
     public String organization() {
-        String organization = this.name + " is able to utilize an organizational system to asking for extra help";
+        String organization = " utilizing an organizational system in checking with " + this.hisher + " teachers";
         return organization; 
     }
     
     public String reading() {
-        String reading = this.name + " is able to ";
+        String reading = " reading to identify the main idea of various passages.";
         return reading; 
     }
     
     public String writing(){
-        String writing = this.name + " is able to ";
+        String writing = " writing a cohesive multi-paragraph writing piece.";
         return writing; 
     }
     
     public String math() {
-        String math = this.name + " is able to "; 
+        String math = " solving complex word problems by breaking each step down."; 
         return math; 
     }
     public String draftreport(){
