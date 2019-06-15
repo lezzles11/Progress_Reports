@@ -15,28 +15,63 @@ public class EachGoal {
     private String name; 
     private String assignment; 
     private int progress; 
+    private int goalArea; 
+    private String goalType; 
     
-    public EachGoal(String name, int progress) {
+    public EachGoal(String name) {
         this.assignment = new String();
         this.name = name; 
         this.numBenchmarks = 0; 
         this.benchmarks = new ArrayList<String>(); 
-        this.progress = progress; 
+        this.progress = 0; 
+        this.goalArea = 0; 
+        this.goalType = new String(); 
     }
-    //getting assignment
+    public void start() {
+        addGoalNum(); 
+        addAssignment(); 
+        addNumBenchmarks(); 
+        addGoalArea(); 
+        addBenchmarks(); 
+        getBenchmarks(); 
+    }
+     public void addGoalNum(){
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("Is this goal an [1] organization, [2] writing, [3] reading or [4] math goal?");
+        System.out.println("Enter a number, please");
+        this.goalArea = Integer.parseInt(reader.nextLine()); 
+     } 
+     //getting assignment
     public void addAssignment(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("\nGive me an assignment that is related to this goal.");
         System.out.println("E.g., WWII Research Paper, Geometry Final Exam, Bi-Monthly Binder Checks, Lord of the Flies Packet");
+        //String cleaner 
         this.assignment = reader.nextLine(); 
     }
-    
     // Getting the number of benchmarks 
-    public void getNumBenchmarks() {
+    public void addNumBenchmarks() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("How many benchmarks does this goal have?");
+        System.out.println("\nHow many benchmarks does this goal have?");
         this.numBenchmarks = Integer.parseInt(reader.nextLine());
     }
+     //getting goal area
+     private void addGoalArea(){ 
+         SpecificGoals type = new SpecificGoals(); 
+         SpecificGoals type2 = new SpecificGoals(); 
+         String input = new String(); 
+         String input2 = new String(); 
+            if (goalArea == 2) {
+                input = type.getWrite();
+            } else if (goalArea == 3) {
+                input = type.getRead();
+            } else if (goalArea == 4) {
+                input = type.getMath();
+            } else {
+                input = type.getOrg();
+            }
+            this.goalType = "Overall, " + this.name + " has made consistent progress in" + input + "\n";
+     }
     // getting each benchmark and adding that to an arraylist 
     public void addBenchmarks() {
         Scanner reader = new Scanner(System.in); 
@@ -49,10 +84,6 @@ public class EachGoal {
             this.benchmarks.add(total);
         }
     }
-    private String getAssignment(){
-        String assign = "This past quarter, " + this.name + " made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + "."; 
-        return assign; 
-    }
     
     //printing each benchmark 
     public void getBenchmarks() {
@@ -61,16 +92,21 @@ public class EachGoal {
         for (int i = 1; i < this.benchmarks.size(); i++) {
             SpecificGoals comment = new SpecificGoals();
             if (this.progress == 2) {
-                each = comment.getTransition() + this.name + comment.getOkay() + this.benchmarks.get(i); 
+                each = comment.getTransition() + this.name + comment.getOkay() + this.benchmarks.get(i) + ".\n"; 
             } else if (this.progress == 3) {
-                each = comment.getTransition() + this.name + comment.getToImprove() + this.benchmarks.get(i); 
+                each = comment.getTransition() + this.name + comment.getToImprove() + this.benchmarks.get(i) + ".\n";
             } else {
-                each = comment.getTransition() + this.name + comment.getAwesome() + this.benchmarks.get(i);
+                each = comment.getTransition() + this.name + comment.getAwesome() + this.benchmarks.get(i) + ".\n";
             }
             returned += each; 
         } 
-        System.out.println(getAssignment() + returned);
+        System.out.println(getAssignment() + returned + this.goalType);
     }
+    private String getAssignment(){
+        String finally1 = "This past quarter, " + this.name + " made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + ".";
+        return finally1; 
+    }
+    
    
     
     

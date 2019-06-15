@@ -16,29 +16,22 @@ The goal of this program is to lighten the workload of special educators around 
 public class firstPart {
     private String name; 
     private List<String> goals; 
-    private ArrayList<Integer> performance; 
     private int numGoals; 
     private String nameOfClass; 
     private String progressReportingPeriod; 
     private String heshe; 
     private String hisher;
     private String initials; 
-    private ArrayList<String> goalAreas; 
-    private ArrayList<String> assignments; 
     private String cheshe; 
     
     public firstPart() {
         this.name = new String(); 
-        this.performance = new ArrayList<Integer>(); 
-        this.goals = new ArrayList<String>(); 
         this.numGoals = 0; 
         this.nameOfClass = new String(); 
         this.progressReportingPeriod = new String(); 
         this.hisher = new String(); 
         this.heshe = new String(); 
         this.initials = new String(); 
-        this.goalAreas = new ArrayList<String>(); 
-        this.assignments = new ArrayList<String>(); 
         this.cheshe = new String(); 
     }
     public void firstPart(){
@@ -51,7 +44,6 @@ public class firstPart {
     public void secondPart(){
             step1NumGoals();
             step2AddGoals();
-            step3GoalType();
         }
     // getting student name 
     public void step1Name() {
@@ -146,41 +138,15 @@ public class firstPart {
         }
     }
     // What kind of goal is it? 
-    public void step3GoalType(){
-        Scanner reader = new Scanner(System.in); 
-        SpecificGoals type = new SpecificGoals(); 
-        String get = new String(); 
-        for (int i = 0; i < this.goals.size(); i++) {
-            int num = i + 1; 
-            System.out.println("Is goal " + num + " an [1] organization, [2] writing, [3] reading or [4] math goal?");
-            System.out.println("Enter a number, please");
-            System.out.println("Remember, goal " + num + " is " + goals.get(i));
-            int goalArea = Integer.parseInt(reader.nextLine()); 
-            if (goalArea == 1) {
-                get = this.name + " made consistent progress in " + type.getOrg() + "\n";
-            } else if (goalArea == 2) {
-                get = this.name + " made consistent progress in "+ type.getWrite() + "\n";
-            } else if (goalArea == 3) {
-                get = this.name + " made consistent progress in " + type.getRead() + "\n";
-            } else if (goalArea == 4) {
-                get = this.name + " made consistent progress in " + type.getMath() + "\n";
-            } else {
-                System.out.println("Sorry, please type in a number");
-            } this.goalAreas.add(get); 
-    } 
-    }
+   
     // getting a number and then printing out the stuff as a result (Goals) 
-    public void step6AddProgressNum() {
+    public int getNumber() {
         Scanner reader = new Scanner(System.in); 
-        for (int i = 0; i < this.goals.size(); i++) {
-            int nums = i + 1; 
-            System.out.println("How did " + this.name + " perform on goal " + nums + "?");
-            System.out.println("Remember, goal " + nums + " is " + goals.get(i));
-            System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
-            int num = Integer.parseInt(reader.nextLine());
-            EachGoal benchmark = new EachGoal(this.name, num); 
-        } 
-    }
+        System.out.println("How did " + this.name + " perform on this goal?"); 
+        System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
+        int num = Integer.parseInt(reader.nextLine());
+        return num; 
+   } 
         
             /*
     
