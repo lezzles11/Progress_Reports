@@ -15,7 +15,7 @@ The goal of this program is to lighten the workload of special educators around 
 
 public class firstPart {
     private String name; 
-    private List<String> goals; 
+    private ArrayList<String> goals; 
     private int numGoals; 
     private String nameOfClass; 
     private String progressReportingPeriod; 
@@ -23,6 +23,8 @@ public class firstPart {
     private String hisher;
     private String initials; 
     private String cheshe; 
+    private ArrayList<Integer>progress; 
+    private EachGoal testing; 
     
     public firstPart() {
         this.name = new String(); 
@@ -33,20 +35,21 @@ public class firstPart {
         this.heshe = new String(); 
         this.initials = new String(); 
         this.cheshe = new String(); 
+        this.progress = new ArrayList<Integer>(); 
+        this.goals = new ArrayList<String>(); 
     }
-    public void firstPart(){
-        step1Name();
-        step2Gender(); 
-        step3Class();
-        step4Period(); 
-        step5Initials();
+    public void start() {
+        addName(); 
+        addClass(); 
+        addPeriod(); 
+        addInitials(); 
+        addNumGoals(); 
+        addGoals(); 
+        printing(); 
+        
     }
-    public void secondPart(){
-            step1NumGoals();
-            step2AddGoals();
-        }
     // getting student name 
-    public void step1Name() {
+    public void addName() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("Progress Reports Time!");
         System.out.println("What is this student's name?");
@@ -55,6 +58,95 @@ public class firstPart {
         System.out.println("From here on out, it is mostly copying and pasting!");
         System.out.println("And we will then generate the most beautiful progress report for you.");
     }
+    // getting the name of the class 
+    public void addClass(){
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("What is the class that is being commented on?");
+        System.out.println("Keep it short - e.g., HN English; HN World History II; Sub-Seperate Math");
+        this.nameOfClass = reader.nextLine(); 
+    }
+    // getting progress period 
+    public void addPeriod(){
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("What is the progress reporting period?");
+        System.out.println("Input a number between 1 and 4");
+        int period = Integer.parseInt(reader.nextLine());
+        if (period == 1) {
+            this.progressReportingPeriod = "Progress Reporting Period #1 " + this.initials +":";
+        } else if (period == 2) {
+            this.progressReportingPeriod = "Progress Reporting Period #2 " + this.initials+":";
+        } else if (period == 3) {
+            this.progressReportingPeriod = "Progress Reporting Period #3 " + this.initials+":";
+        } else if (period == 4) {
+            this.progressReportingPeriod = "Progress Reporting Period #4 " + this.initials+":";
+        } else {
+            System.out.println("Please enter a number between 1 and 4");
+        }
+    };
+    // getting initials of special educator 
+    public void addInitials() {
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("What are your initials?");
+        System.out.println("Just enter 2-3 letters, please");
+        System.out.println("E.g., type in LC for Lizzie Cheung");
+        String initial = reader.nextLine(); 
+        this.initials = "("+initial+")";
+    }
+   
+    //getting the number of goals the student has 
+    public void addNumGoals() {
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("How many goals does " + this.name + " have? (Please enter a number)");
+        this.numGoals = Integer.parseInt(reader.nextLine());
+    }
+    //getting each goal 
+    public void addGoals() {
+        Scanner reader = new Scanner(System.in); 
+        for (int i = 0; i < this.numGoals; i++) {
+            int num = i + 1; 
+            System.out.println("For goal " + num + ": ");
+            System.out.print(this.name + " is making progress towards the goal of... \n(Begin with verb that ends with -ing)");
+            System.out.println("\nE.g., writing with clear organization and sufficient detail with 70% independence, as measured by teacher progress reports and curriculum based assessments.");
+            String goal = reader.nextLine();
+            // the first sentence of every goal 
+            String finalGoal = this.name + " has been making consistent progress towards " + goal + "."; 
+            this.goals.add(finalGoal); 
+        }
+    }
+    public void printing() {
+        for (int i = 0; i < numGoals; i++) {
+            int nums = i + 1; 
+            EachGoal test = new EachGoal(this.name); 
+            System.out.println("Now, let's do goal " + nums + "!\n");
+            test.start(); 
+            System.out.print("\n" + this.progressReportingPeriod + "\n" + "In " + this.nameOfClass + ", " +this.goals.get(i));
+            test.print();
+            System.out.println(this.initials);
+        }
+    }
+    public String getName() {
+        return this.name; 
+    }
+    public String getProgress(){
+        return this.progressReportingPeriod;
+    }
+    public String getNameOfClass(){
+        return this.nameOfClass;
+    }
+    public String getInitials(){
+        return this.initials;
+    }
+    
+            /*
+    
+    public void print(){
+        this.benchmarks.forEach((k, v) -> {
+            System.out.print(k + " = ");
+            v.forEach(w -> System.out.print(w + ","));
+            System.out.println();
+        });
+    }
+    
     // what gender? 
     public void step2Gender() {
         Scanner reader = new Scanner(System.in); 
@@ -82,87 +174,7 @@ public class firstPart {
         }
         }
     }
-    // getting the name of the class 
-    public void step3Class(){
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("What is the class that is being commented on?");
-        System.out.println("Keep it short - e.g., HN English; HN World History II; Sub-Seperate Math");
-        this.nameOfClass = reader.nextLine(); 
-    }
-    // getting progress period 
-    public void step4Period(){
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("What is the progress reporting period?");
-        System.out.println("Input a number between 1 and 4");
-        int period = Integer.parseInt(reader.nextLine());
-        if (period == 1) {
-            this.progressReportingPeriod = "Progress Reporting Period #1 " + this.initials +":";
-        } else if (period == 2) {
-            this.progressReportingPeriod = "Progress Reporting Period #2 " + this.initials+":";
-        } else if (period == 3) {
-            this.progressReportingPeriod = "Progress Reporting Period #3 " + this.initials+":";
-        } else if (period == 4) {
-            this.progressReportingPeriod = "Progress Reporting Period #4 " + this.initials+":";
-        } else {
-            System.out.println("Please enter a number between 1 and 4");
-        }
-    };
-    // getting initials of special educator 
-    public void step5Initials() {
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("What are your initials?");
-        System.out.println("Just enter 2-3 letters, please");
-        System.out.println("E.g., type in LC for Lizzie Cheung");
-        String initial = reader.nextLine(); 
-        this.initials = "("+initial+")";
-    }
-    
-    //getting the number of goals the student has 
-    public void step1NumGoals() {
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("How many goals does " + this.name + " have? (Please enter a number)");
-        this.numGoals = Integer.parseInt(reader.nextLine());
-    }
-    //getting each goal 
-    public void step2AddGoals() {
-        Scanner reader = new Scanner(System.in); 
-        for (int i = 0; i < this.numGoals; i++) {
-            int num = i + 1; 
-            System.out.println("For goal " + num + ": ");
-            System.out.print(this.name + " is making progress towards the goal of... (begin with verb that ends with -ing)");
-            System.out.println("E.g., writing with clear organization and sufficient detail with 70% independence, as measured by teacher progress reports and curriculum based assessments.");
-            String goal = reader.nextLine();
-            // the first sentence of every goal 
-            String finalGoal = goal + ".\n"; 
-            this.goals.add(finalGoal); 
-        }
-    }
-    // What kind of goal is it? 
-   
-    // getting a number and then printing out the stuff as a result (Goals) 
-    public int getNumber() {
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("How did " + this.name + " perform on this goal?"); 
-        System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
-        int num = Integer.parseInt(reader.nextLine());
-        return num; 
-   } 
-        
-            /*
-    
-    public void print(){
-        this.benchmarks.forEach((k, v) -> {
-            System.out.print(k + " = ");
-            v.forEach(w -> System.out.print(w + ","));
-            System.out.println();
-        });
-    }
     */
-    
-    public String getName() {
-        return this.name; 
-    }
-    
     
     
 }
