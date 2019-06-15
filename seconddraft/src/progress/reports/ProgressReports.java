@@ -16,9 +16,8 @@ public class ProgressReports {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        EachGoal test = new EachGoal("Andy");
+        firstPart test = new firstPart(); 
         test.start(); 
-        
         
     }
 

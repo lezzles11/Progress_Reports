@@ -14,27 +14,37 @@ public class EachGoal {
     private ArrayList<String> benchmarks; 
     private String name; 
     private String assignment; 
-    private int progress; 
     private int goalArea; 
     private String goalType; 
+    private int progress; 
     
     public EachGoal(String name) {
         this.assignment = new String();
         this.name = name; 
         this.numBenchmarks = 0; 
         this.benchmarks = new ArrayList<String>(); 
-        this.progress = 0; 
         this.goalArea = 0; 
         this.goalType = new String(); 
+        this.progress = 0; 
     }
     public void start() {
         addGoalNum(); 
         addAssignment(); 
+        addProgress();
         addNumBenchmarks(); 
         addGoalArea(); 
         addBenchmarks(); 
-        getBenchmarks(); 
     }
+    
+    public void print(){
+        getBenchmarks();
+    }
+    public void addProgress() {
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("How did " + this.name + " perform on this goal?"); 
+        System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
+        this.progress = Integer.parseInt(reader.nextLine());
+   } 
      public void addGoalNum(){
         Scanner reader = new Scanner(System.in); 
         System.out.println("Is this goal an [1] organization, [2] writing, [3] reading or [4] math goal?");
@@ -70,7 +80,7 @@ public class EachGoal {
             } else {
                 input = type.getOrg();
             }
-            this.goalType = "Overall, " + this.name + " has made consistent progress in" + input + "\n";
+            this.goalType = " Overall, " + this.name + " has made consistent progress in" + input;
      }
     // getting each benchmark and adding that to an arraylist 
     public void addBenchmarks() {
@@ -100,17 +110,25 @@ public class EachGoal {
             }
             returned += each; 
         } 
-        System.out.println(getAssignment() + returned + this.goalType);
+        System.out.print(getAssignment() + returned + this.goalType);
     }
     private String getAssignment(){
-        String finally1 = "This past quarter, " + this.name + " made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + ".";
+        String finally1 =  this.name + " has also made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + ".";
         return finally1; 
     }
     
-   
+    public void getLastSentence() {
+        String each = new String(); 
+        for (int i = 0; i < numBenchmarks; i++) {
+            if (this.progress == 2) {
+                each = " With consistent effort, " + this.name + " may be able to make progress";
+            } else if (this.progress == 3) {
+                each = " With increased motivation and effort, " + this.name + " may be able to make progress";
+            } else {
+               each = " With consistent effort, " + this.name + " may be able to make progress";
+            }
+        } 
+        System.out.print(each);
+    }
+    }
     
-    
-        
-
-    
-}
