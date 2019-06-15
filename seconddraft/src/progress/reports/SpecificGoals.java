@@ -62,8 +62,6 @@ public class SpecificGoals {
     private static final String [] TRANSITIONS = {
     " In addition, ",
     " Furthermore, ",
-    " Equally important, ",
-    " Similarly, ",
     " Moreover, ",
     " Additionally, "
     }; 

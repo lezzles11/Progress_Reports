@@ -61,14 +61,14 @@ public class firstPart {
     // getting the name of the class 
     public void addClass(){
         Scanner reader = new Scanner(System.in); 
-        System.out.println("What is the class that is being commented on?");
+        System.out.println("\nWhat is the class that is being commented on?");
         System.out.println("Keep it short - e.g., HN English; HN World History II; Sub-Seperate Math");
         this.nameOfClass = reader.nextLine(); 
     }
     // getting progress period 
     public void addPeriod(){
         Scanner reader = new Scanner(System.in); 
-        System.out.println("What is the progress reporting period?");
+        System.out.println("\nWhat is the progress reporting period?");
         System.out.println("Input a number between 1 and 4");
         int period = Integer.parseInt(reader.nextLine());
         if (period == 1) {
@@ -86,7 +86,7 @@ public class firstPart {
     // getting initials of special educator 
     public void addInitials() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("What are your initials?");
+        System.out.println("\nWhat are your initials?");
         System.out.println("Just enter 2-3 letters, please");
         System.out.println("E.g., type in LC for Lizzie Cheung");
         String initial = reader.nextLine(); 
@@ -96,7 +96,7 @@ public class firstPart {
     //getting the number of goals the student has 
     public void addNumGoals() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("How many goals does " + this.name + " have? (Please enter a number)");
+        System.out.println("\nHow many goals does " + this.name + " have? (Please enter a number)");
         this.numGoals = Integer.parseInt(reader.nextLine());
     }
     //getting each goal 
@@ -104,7 +104,7 @@ public class firstPart {
         Scanner reader = new Scanner(System.in); 
         for (int i = 0; i < this.numGoals; i++) {
             int num = i + 1; 
-            System.out.println("For goal " + num + ": ");
+            System.out.println("\nFor goal " + num + ": ");
             System.out.print(this.name + " is making progress towards the goal of... \n(Begin with verb that ends with -ing)");
             System.out.println("\nE.g., writing with clear organization and sufficient detail with 70% independence, as measured by teacher progress reports and curriculum based assessments.");
             String goal = reader.nextLine();
@@ -117,7 +117,8 @@ public class firstPart {
         for (int i = 0; i < numGoals; i++) {
             int nums = i + 1; 
             EachGoal test = new EachGoal(this.name); 
-            System.out.println("Now, let's do goal " + nums + "!\n");
+            System.out.println("Now, let's do goal " + nums + "!");
+            System.out.println("Remember, goal " + nums + " is " + this.goals.get(i));
             test.start(); 
             System.out.print("\n" + this.progressReportingPeriod + "\n" + "In " + this.nameOfClass + ", " +this.goals.get(i));
             test.print();
