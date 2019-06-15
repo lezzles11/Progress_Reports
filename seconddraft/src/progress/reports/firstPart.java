@@ -4,6 +4,14 @@ package progress.reports;
  * @author lesleycheung
  */
 import java.util.*; 
+/*
+*The program here is still in progress (which is why it's quite messy right now). 
+
+The purpose of this program is to generate progress reports that address students with disabilities' 
+reading, writing, organizational and math goals. 
+In the US, special educators are required to comment on students' progress (goals and benchmarks) four times a year.
+The goal of this program is to lighten the workload of special educators around the states. 
+*/
 
 public class firstPart {
     private String name; 
@@ -36,7 +44,7 @@ public class firstPart {
         this.comments = new ProgressReports(); 
     }
     
-    public void setUp(){
+    public void firstPart(){
         step1Name();
         step2Gender(); 
         step3Class();
@@ -44,14 +52,22 @@ public class firstPart {
         step5Initials();
     }
     
-    public void testing() {
-        firstPart3();
-        firstPart4();
-        print(); 
-        getName(); 
-        testing5();
-        testing6();
-    }
+    public void secondPart(){
+            step1NumGoals();
+            step2AddGoals();
+            step3GoalType();
+            step4addAssignment();
+            step5addBenchmarks();
+            step6AddProgress();
+        }
+        
+        public void thirdPart() {
+            for (int i = 0; i < this.goals.size(); i++) {
+                String goal = this.goals.get(i);
+                System.out.println(beginningPart(goal) + endingPart());
+            }
+        }
+        
     // getting student name 
     public void step1Name() {
         Scanner reader = new Scanner(System.in); 
@@ -66,17 +82,17 @@ public class firstPart {
     // what gender? 
     public void step2Gender() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("Whoops - I don't quite have a system in which to seperate girls from boys -");
+        System.out.println("\nWhoops - I don't quite have a system in which to seperate girls from boys -");
         while (true) {
             System.out.println("Enter [1] for female, [2] for male, [3] no comment");
             System.out.println("Enter a number, please!");
             int ans = Integer.parseInt(reader.nextLine()); 
-        if (ans == 1) {
+            if (ans == 1) {
             this.hisher = "her";
             this.heshe = "she";
             this.cheshe = "She";
             break; 
-        } else if (ans == 2) {
+            } else if (ans == 2) {
             this.hisher = "his";
             this.heshe = "he";
             this.cheshe = "He";
@@ -125,14 +141,15 @@ public class firstPart {
         String initial = reader.nextLine(); 
         this.initials = "("+initial+")";
     }
+    
     //getting the number of goals the student has 
-    public void firstPart2() {
+    public void step1NumGoals() {
         Scanner reader = new Scanner(System.in); 
         System.out.println("How many goals does " + this.name + " have? (Please enter a number)");
         this.numGoals = Integer.parseInt(reader.nextLine());
     }
     //getting each goal 
-    public void firstPart3() {
+    public void step2AddGoals() {
         Scanner reader = new Scanner(System.in); 
         for (int i = 0; i < this.numGoals; i++) {
             int num = i + 1; 
@@ -147,36 +164,10 @@ public class firstPart {
             this.goals.add(finalGoal); 
         }
     }
-    
-    // getting number of benchmarks; 
-    public void firstPart4() {
-        Scanner reader = new Scanner(System.in); 
-        System.out.println("\n\nNow, let's get " + this.name + "'s benchmarks!\n(Remember to have the document open!)\n\n");
-        System.out.println("I will ask you about what his benchmarks are, as well as what assignment measures that goal.");
-        
-        for (int i = 0; i < this.goals.size(); i++) {
-            ArrayList<String> added = new ArrayList<String>(); 
-            int num = i + 1; 
-            System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to " + goals.get(i)+")");
-            System.out.println("\nWhat is an assignment or task related to this benchmark?\n");
-            System.out.println("E.g., WWII Research Paper; Geometry Final Exam; Presentation on Energy Waves (Give a specific assignment name) \n");
-            String assign = reader.nextLine();
-            this.assignments.add(assign); 
-            System.out.println("How many benchmarks does " + this.name + " have for goal " + num + "?");
-            System.out.println("Remember to enter a number!");
-            
-                int numBenchmark = Integer.parseInt(reader.nextLine());
-                for (int j = 0; j < numBenchmark; j++) {
-                    int numba = j + 1; 
-                    System.out.println("\nBenchmark " + numba + ":\n" + this.name + " will be able to... (finish the sentence)");
-                    String benchmark = reader.nextLine();
-                    added.add(benchmark);
-            } this.benchmarks.put(goals.get(i), added);
-        }
-    }
     // What kind of goal is it? 
-    public void testing5(){
+    public void step3GoalType(){
         Scanner reader = new Scanner(System.in); 
+        SpecificGoals type = new SpecificGoals(); 
         String get = new String(); 
         for (int i = 0; i < this.goals.size(); i++) {
             int num = i + 1; 
@@ -184,76 +175,94 @@ public class firstPart {
             System.out.println("Enter a number, please");
             System.out.println("Remember, goal " + num + " is " + goals.get(i));
             int goalArea = Integer.parseInt(reader.nextLine()); 
-            
             if (goalArea == 1) {
-                get = getOrganization(); 
+                get = this.name + " was able to " + type.getOrg();
             } else if (goalArea == 2) {
-                get = getWriting(); 
+                get = this.name + " was able to " + type.getWrite();
             } else if (goalArea == 3) {
-                get = getReading(); 
+                get = this.name + " was able to " + type.getRead();
             } else if (goalArea == 4) {
-                get = getMath(); 
+                get = this.name + " was able to " + type.getMath();
             } else {
                 System.out.println("Sorry, please type in a number");
             }
     } this.goalAreas.add(get); 
     }
-    
-    // how did the student perform on the goal? 
-    public void testing6() {
+    // getting number of benchmarks; 
+    public void step4addAssignment() {
         Scanner reader = new Scanner(System.in); 
-        for (int i = 0; i < this.goalAreas.size(); i++) {
-            ArrayList<String> benchmarkEach = this.benchmarks.get(i);
-            System.out.println("How did " + this.name + " perform on the goal?");
-            System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
-            int num = Integer.parseInt(reader.nextLine());
-            if (num == 1) {
-                great(this.goalAreas.get(i));
-            } else if (num == 2){
-                okay(this.goalAreas.get(i));
-            } else if (num ==3) {
-               bad(this.goalAreas.get(i));
-            } else {
-                System.out.println("I don't think I understood that. Try again? ");
-            }
+        System.out.println("\n\nNow, let's get " + this.name + "'s benchmarks!\n(Remember to have the document open!)\n\n");
+        System.out.println("I will ask you about what his benchmarks are, as well as what assignment measures that goal.");
         
+        for (int i = 0; i < this.goals.size(); i++) {
+           
+            int num = i + 1; 
+            System.out.println("(Just a reminder, goal " + num + " was that "  + this.name + " will be able to " + goals.get(i)+")");
+            System.out.println("\nWhat is an assignment or task related to this benchmark?\n");
+            System.out.println("E.g., WWII Research Paper; Geometry Final Exam; Presentation on Energy Waves (Give a specific assignment name) \n");
+            // adding an assignment to an array 
+            String assign = reader.nextLine();
+            this.assignments.add(assign); 
+            // in this.goals = <goal1, goal2, goal3>
+            // in this.assignments = <assign1, assign2, assign3> 
         }
     }
-    //String finalBenchmark = this.name + " was able to " + benchmark + " this past semester, which was seen 
-    //through the completion of " + assignment + ".\n";
-    public void great(String goalArea){
-        this.benchmarks.forEach((k, v) -> {
-            String beginningPart = beginningPart(); 
-            System.out.print(beginningPart + k + ".");
-            v.forEach(w -> System.out.print(w + ","));
-            System.out.println(this.name + " exceed in " + goalArea);
-            System.out.println(this.name + " has been a positive influence on the class, and we are proud to see " + this.name +"'s progress over the past quarter("+ this.initials +").");
-            System.out.println("");
-            System.out.println();
-        });
-    }
+    public void step5addBenchmarks(){
+            // getting number of benchmarks; 
+            Scanner reader = new Scanner(System.in); 
+            for (int i = 0; i<this.goals.size(); i++) {
+                int num = i+1; 
+            System.out.println("How many benchmarks does " + this.name + " have for goal " + num + "?");
+            System.out.println("Remember to enter a number!");
+            ArrayList<String>added = new ArrayList<String>(); 
+            int numBenchmark = Integer.parseInt(reader.nextLine());
+            for (int j = 0; j < numBenchmark; j++) {
+                int numba = j + 1; 
+                // Benchmark 1: Andy will be able to... 
+                System.out.println("\nBenchmark " + numba + ":\n" + this.name + " will be able to... (finish the sentence)");
+                String benchmark = reader.nextLine();
+                String total = " " + benchmark; 
+                added.add(total);
+            } this.benchmarks.put(goals.get(i), added);
+                    /*
+                    This is what should be in the hashmap: 
+                    <read a paragraph thoroughly, <" edit for errors", " independently draft a graphic organizer">>; 
+                    */
+        }
+}
     
-    public void okay(String goalArea){
-        this.benchmarks.forEach((k, v) -> {
-            String beginningPart = beginningPart(); 
-            System.out.print(beginningPart + k + ".");
-            v.forEach(w -> System.out.print(w + ","));
-            System.out.println(this.name + " did well in " + goalArea);
-            System.out.println(this.name + " may need to continue to work hard on all assignments (as well as completing them on time).");
-            
-        });
-    }
-    
-    public void bad(String goalArea){
-        this.benchmarks.forEach((k, v) -> {
-            String beginningPart = beginningPart(); 
-            System.out.print(beginningPart + k + ".");
-            v.forEach(w -> System.out.print(this.name + "was able to " + w + ","));
-            System.out.println(this.name + " struggled in " + goalArea);
-            System.out.println(this.heshe + " is able to use checklists in class, but " + this.name + " may need to work on doing so independently.");
-            System.out.println(this.heshe + " frequently needs encouragement in staying afterschool to complete written work.");
-            System.out.println();
-        });
+    // how did the student perform on the goal? 
+    public String step6AddProgress() {
+        Scanner reader = new Scanner(System.in); 
+        SpecificGoals comment = new SpecificGoals(); 
+        SpecificGoals comment2 = new SpecificGoals(); 
+        String benchmarkComment = new String();
+        String assignComment = new String();
+        String returnThis = new String(); 
+        for (int i = 0; i < this.goalAreas.size(); i++) {
+            int nums = i + 1; 
+            ArrayList<String> benchmarkEach = this.benchmarks.get(i);
+            String assign = this.assignments.get(i); 
+            System.out.println("How did " + this.name + " perform on the benchmark number " + nums + "?");
+            System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
+            int num = Integer.parseInt(reader.nextLine());
+            // need to throw exception here 
+            if (num == 1) {
+                 benchmarkComment = this.goalAreas.get(i) + this.name + comment.getAwesome() + benchmarkEach;
+                 assignComment = this.name + comment2.getAwesome() + " this area, as demonstrate by " + this.hisher + assign + "."; 
+            } else if (num == 2){
+                benchmarkComment =  this.goalAreas.get(i) + comment.getOkay() + benchmarkEach;
+                assignComment = this.name + comment2.getOkay() + " this area, as demonstrate by " + this.hisher + assign + "."; 
+            } else if (num ==3) {  
+                benchmarkComment = this.goalAreas.get(i) + comment.getToImprove() + benchmarkEach;
+                assignComment = this.name + comment2.getToImprove() + " this area, as demonstrate by " + this.hisher + assign + "."; 
+            } else {
+                benchmarkComment = this.goalAreas.get(i) + comment.getToImprove() + benchmarkEach + "\n" +
+                        this.goalAreas.get(i) + comment.getOkay() + benchmarkEach + "\n" + 
+                        this.goalAreas.get(i) + comment.getToImprove() + benchmarkEach + "\n";
+                assignComment = "test";
+            } returnThis = benchmarkComment + assignComment; 
+        } return returnThis; 
     }
     
     public void print(){
@@ -268,30 +277,12 @@ public class firstPart {
         return this.name; 
     }
     
-    public String getOrganization() {
-        String organization = " utilizing an organizational system in checking with " + this.hisher + " teachers";
-        return organization; 
-    }
-    
-    public String getReading() {
-        String reading = " reading to identify the main idea of various passages.";
-        return reading; 
-    }
-    
-    public String getWriting(){
-        String writing = "writing a cohesive multi-paragraph writing piece.";
-        return writing; 
-    }
-    
-    public String getMath() {
-        String math = " solving complex word problems by breaking each step down."; 
-        return math; 
-    }
-    public String beginningPart(){
+    public String beginningPart(String goal){
         String pt1 = this.progressReportingPeriod + "\n";
-        String pt2 = "In " + this.nameOfClass + ", " + this.name + " is making progress towards the goal of "; 
+        String pt2 = "In " + this.nameOfClass + ", " + this.name + " is making progress towards the goal of " + goal; 
+        String pt3 = step6AddProgress(); 
         String finally1 = new String(); 
-        finally1 = pt1 + pt2; 
+        finally1 = pt1 + pt2 + pt3; 
         return finally1; 
     }
     
@@ -305,53 +296,6 @@ public class firstPart {
     
 }
 
-/*
 
-
-if(player.equals(comp)){
-                    JOptionPane.showMessageDialog(null, "It's a tie!");
-                    ties ++;
-
-                }
-                else if(player.equals("rock")){
-                    if(comp.equals("scissors")){
-                        JOptionPane.showMessageDialog(null, "You win!");
-                        playerWins ++;
-
-                    }
-                }else if(comp.equals("rock")){
-                    if(player.equals("scissors")){
-                        JOptionPane.showMessageDialog(null, "You lose!");
-                        compWins ++;
-
-                    }
-                }else if(player.equals("scissors")){
-                    if(comp.equals("paper")){
-                        JOptionPane.showMessageDialog(null, "You win!");
-                        playerWins ++;
-
-                    }
-                }else if(comp.equals("scissors")){
-                    if(player.equals("paper")){
-                        JOptionPane.showMessageDialog(null, "You lose");
-                        compWins ++;
-
-                    }
-                }else if(player.equals("paper")){
-                    if(comp.equals("rock")){
-                        JOptionPane.showMessageDialog(null, "You Win!");
-                        playerWins ++;
-                    }
-                }else if(comp.equals("paper")){
-                    if(player.equals("rock")){
-                        JOptionPane.showMessageDialog(null, "You lose!");
-                        compWins ++;
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "Invalid user input");
-                    i--;
-                }
-
-*/
 
 

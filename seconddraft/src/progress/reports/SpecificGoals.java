@@ -61,7 +61,7 @@ public class SpecificGoals {
     };
     private final String awesome; 
     private final String okay; 
-    private final String bad; 
+    private final String toImprove; 
     private final String organization; 
     private final String reading; 
     private final String math; 
@@ -71,15 +71,15 @@ public class SpecificGoals {
     public SpecificGoals() {
         this.awesome = AWESOME[random.nextInt(AWESOME.length)];
         this.okay = OKAY[random.nextInt(OKAY.length)];
-        this.bad = BAD[random.nextInt(BAD.length)];
+        this.toImprove = BAD[random.nextInt(BAD.length)];
         this.organization = ORG[random.nextInt(ORG.length)];
         this.reading = READ[random.nextInt(READ.length)];
         this.math = MATH[random.nextInt(MATH.length)];
         this.writing = WRITE[random.nextInt(WRITE.length)];
     }
     
-    public String getBad(){
-        return this.bad; 
+    public String getToImprove(){
+        return this.toImprove; 
     }
     public String getAwesome() {
         return this.awesome; 

@@ -16,9 +16,10 @@ public class ProgressReports {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        SpecificGoals one = new SpecificGoals(); 
-        System.out.println("Andy" + one.getAwesome() + one.getRead()); 
-        
+        firstPart firstDraft = new firstPart(); 
+        firstDraft.firstPart();
+        firstDraft.secondPart();
+        firstDraft.thirdPart(); 
         
     }
 
