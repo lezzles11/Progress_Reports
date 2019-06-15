@@ -38,10 +38,11 @@ public class EachGoal {
     
     public void print(){
         getBenchmarks();
+        getLastSentence(); 
     }
     public void addProgress() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("How did " + this.name + " perform on this goal?"); 
+        System.out.println("\nHow did " + this.name + " perform on this goal?"); 
         System.out.println("[1] Awesome!! [2] Okay (making progress) [3] Really made no progress / struggled in making progress");
         this.progress = Integer.parseInt(reader.nextLine());
    } 
@@ -121,14 +122,13 @@ public class EachGoal {
         String each = new String(); 
         for (int i = 0; i < numBenchmarks; i++) {
             if (this.progress == 2) {
-                each = " With consistent effort, " + this.name + " may be able to make progress";
+                each = " Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, " + this.name + " should be able to achieve this annual goal by the end of the IEP period ";
             } else if (this.progress == 3) {
-                each = " With increased motivation and effort, " + this.name + " may be able to make progress";
+                each = " Based on " + this.name + "'s current rate of progress, and with increased effort and motivation " + this.name + " may be able to achieve this annual goal by the end of the IEP period ";
             } else {
-               each = " With consistent effort, " + this.name + " may be able to make progress";
-            }
+               each = " Based on " + this.name + "'s current rate of progress, and with continued direct instruction and support, " + this.name + " should be able to achieve this annual goal by the end of the IEP period ";
         } 
-        System.out.print(each);
+        
+    } System.out.print(each);
     }
-    }
-    
+}
