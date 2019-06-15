@@ -59,6 +59,14 @@ public class SpecificGoals {
     " completing assigned assignments.",
     " completing larger projects."
     };
+    private static final String [] TRANSITIONS = {
+    " In addition, ",
+    " Furthermore, ",
+    " Equally important, ",
+    " Similarly, ",
+    " Moreover, ",
+    " Additionally, "
+    }; 
     private final String awesome; 
     private final String okay; 
     private final String toImprove; 
@@ -66,6 +74,7 @@ public class SpecificGoals {
     private final String reading; 
     private final String math; 
     private final String writing; 
+    private final String transition; 
     private final Random random = new Random(); 
     
     public SpecificGoals() {
@@ -76,8 +85,11 @@ public class SpecificGoals {
         this.reading = READ[random.nextInt(READ.length)];
         this.math = MATH[random.nextInt(MATH.length)];
         this.writing = WRITE[random.nextInt(WRITE.length)];
+        this.transition = TRANSITIONS[random.nextInt(TRANSITIONS.length)];
     }
-    
+    public String getTransition(){
+        return this.transition; 
+    }
     public String getToImprove(){
         return this.toImprove; 
     }

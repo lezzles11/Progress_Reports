@@ -16,10 +16,12 @@ public class ProgressReports {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        firstPart firstDraft = new firstPart(); 
-        firstDraft.firstPart();
-        firstDraft.secondPart();
-        firstDraft.thirdPart(); 
+        EachGoal test = new EachGoal("Andy", 1);
+        test.getNumBenchmarks();
+        test.addBenchmarks();
+        test.addAssignment();
+        test.getBenchmarks();
+        
         
     }
 
