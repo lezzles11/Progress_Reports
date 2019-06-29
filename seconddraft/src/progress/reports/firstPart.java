@@ -117,12 +117,15 @@ public class firstPart {
         for (int i = 0; i < numGoals; i++) {
             int nums = i + 1; 
             EachGoal test = new EachGoal(this.name); 
-            System.out.println("Now, let's do goal " + nums + "!");
+            System.out.println("\nWe will do one goal at a time - let's do goal " + nums + "first!");
+            System.out.println("I'm going to be asking you about this goal's benchmarks and assignments");
             System.out.println("Remember, goal " + nums + " is " + this.goals.get(i));
             test.start(); 
+            System.out.println("Here's goal " + nums);
+            System.out.println("Feel free to copy and paste (as well as edit to your liking!)");
             System.out.print("\n" + this.progressReportingPeriod + "\n" + "In " + this.nameOfClass + ", " +this.goals.get(i));
             test.print();
-            System.out.println(this.initials);
+            System.out.println(this.initials + ".");
         }
     }
     public String getName() {

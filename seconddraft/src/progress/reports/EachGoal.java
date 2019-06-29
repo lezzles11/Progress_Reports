@@ -114,7 +114,7 @@ public class EachGoal {
         System.out.print(getAssignment() + returned + this.goalType);
     }
     private String getAssignment(){
-        String finally1 =  this.name + " has also made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + ".";
+        String finally1 =  " " + this.name + " has also made progress in" + this.benchmarks.get(0) + ", as demonstrated by " + this.assignment + ".";
         return finally1; 
     }
     
