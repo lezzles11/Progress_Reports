@@ -5,6 +5,8 @@
  */
 package progress.reports;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author lesleycheung
@@ -18,6 +20,8 @@ public class ProgressReports {
         // TODO code application logic here
         firstPart test = new firstPart(); 
         test.start(); 
+        UserInterface ui = new UserInterface(); 
+        SwingUtilities.invokeLater(ui); 
         
     }
 
